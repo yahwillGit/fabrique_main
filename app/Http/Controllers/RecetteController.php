@@ -17,21 +17,9 @@ class RecetteController extends Controller
     public function index()
     {
 
-        // $recettes = [];
-        // $typerecettes = [];
-        // $arrecettes = [];
-        // foreach ($recettes as $key => $recette) {
-        //     foreach ($typerecettes as $key => $typerecette) {
-        //         if($recette->type_recette_id == $typerecette->id){
-        //             // $recettes[$key]->Typerecette = $typerecette;
-        //             array_push($arrecettes, $recette);
-        //             break;
-        //         }
-        //     }
-        // }
         $recettes = Recette::all();
         $types = Typerecette::all();
-        // dd($recettes);
+        // dd($types);
         return view('pages.recettes.index', compact('recettes','types'));
     }
 

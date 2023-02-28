@@ -6,6 +6,7 @@ use App\IntrantProduit;
 use App\Produits;
 use App\Intrants;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 
 class IntrantProduitController extends Controller
@@ -18,8 +19,12 @@ class IntrantProduitController extends Controller
     public function index()
     {
         //
-        $intrantproduits = Intrantproduit::all(); 
-        $intrants = Intrants::all(); 
+        $intrantproduits = DB::table('intrant_produits')
+        ->join('intrants','intrants.id','=','intrant_produits.intrant_id')
+        ->join('produits','produits.id','=','intrant_produits.produit_id')
+        ->select('produits.nom as nom_prod','intrants.nom as nom_intrant','intrant_produits.*')
+        ->get();
+        $intrants = Intrants::all();
         $produits = Produits::all();
         return view('pages.intrantproduits.index', compact('intrantproduits','intrants','produits'));
     }
@@ -32,8 +37,8 @@ class IntrantProduitController extends Controller
     public function create()
     {
         //
-        $intrants = Intrants::all(); 
-        $produits = Produits::all(); 
+        $intrants = Intrants::all();
+        $produits = Produits::all();
         return view('pages.intrantproduits.create',compact('intrants','produits'));
     }
 
@@ -83,15 +88,15 @@ class IntrantProduitController extends Controller
     public function update(Request $request, IntrantProduit $intrantProduit, $id)
     {
         //
-        $intrantproduits = Intrantproduit::find($id);
+        $intrantproduit = Intrantproduit::find($id);
 
         //ensuite je passe a la mise à jour
-        $intrantproduits->produit_id = Request('produit_id');
-        $intrantproduits->intrant_id = Request('intrant_id');
-        $intrantproduits->quantite_produit = Request('quantite_produit');
-        $intrantproduits->quantite_intrant = Request('quantite_intrant');
+        $intrantproduit->produit_id = Request('produit_id');
+        $intrantproduit->intrant_id = Request('intrant_id');
+        $intrantproduit->quantite_produit = Request('quantite_produit');
+        $intrantproduit->quantite_intrant = Request('quantite_intrant');
 
-        $intrantproduits->save();
+        $intrantproduit->save();
 
         return back()->with('success','Informations mise-à-jour avec succès');
     }

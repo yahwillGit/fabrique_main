@@ -54,39 +54,16 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="">Liste</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="{{route('factures.index')}}">Factures</a>
                     </li>
 
                 </ul>
             </div>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#parametres" aria-expanded="false"
-               aria-controls="ui-basic">
-                <i class="menu-icon typcn typcn-coffee"></i>
-                <span class="menu-title">Paramétrages</span>
-                <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="parametres">
-                <ul class="nav flex-column sub-menu">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{route('ventes.index')}}">
-                            <span class="menu-title">Intrant - brique</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{route('ventes.index')}}">
-                            <span class="menu-title">Agents de production par paquet</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{route('ventes.index')}}">
-                            <span class="menu-title">Agents de chargement par brique</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </li>
+
         <li class="nav-item">
             <a class="nav-link" href="{{route('fournisseurs.index')}}">
                 <i class="menu-icon typcn typcn-shopping-bag"></i>
@@ -153,36 +130,7 @@
                 <span class="menu-title">Produits</span>
             </a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#users" aria-expanded="false"
-               aria-controls="ui-basic">
-                <i class="menu-icon typcn typcn-coffee"></i>
-                <span class="menu-title">Etats & Stats</span>
-                <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="users">
-                <ul class="nav flex-column sub-menu">
-                    <li class="nav-item">
-                        <a class="nav-link" href="">Etat du stock</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" data-toggle="modal" data-target="#modal-commandes">Etat des commandes</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="">Etat des créances </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="">Etat des dettes</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" data-toggle="modal" data-target="#modal-clients">Liste des clients</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="">Etat des commandes</a>
-                    </li>
-                </ul>
-            </div>
-        </li>
+
         <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#users" aria-expanded="false"
                aria-controls="ui-basic">

@@ -23,7 +23,7 @@
                             <input type="text" class="form-control" id="exampleInputPassword4" placeholder="Lieu de naissance">
                         </div>
                         <div class="form-group col-md-6">
-                            <label>Pièce d'état civil</label>
+                            <label>Pièce détat civil</label>
                             <div class="input-group col-xs-12">
                                 <input type="text" class="form-control file-upload-info" placeholder="Charger un fichier">
                                 <span class="input-group-append">

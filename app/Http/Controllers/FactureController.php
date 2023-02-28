@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Clients;
 use App\Facture;
 use Illuminate\Http\Request;
 
@@ -25,7 +26,8 @@ class FactureController extends Controller
      */
     public function create()
     {
-        //
+        $clients = Clients::all();
+        return view('pages.factures.create',compact('clients'));
     }
 
     /**
@@ -37,6 +39,19 @@ class FactureController extends Controller
     public function store(Request $request)
     {
 
+        Facture::insert([
+            'created_at' => date("Y-m-d"),
+            'commentaire' => $request->commentaire,
+            'client_id' => $request->client,
+            'montant_ht' => $request->montant_ht,
+            'montant_tva' => $request->montant_tva,
+            'remise' => $request->remise,
+            'ristourne' => $request->ristourne,
+            'montant_ttc' => $request->montant_ttc,
+            'montant_reste' => $request->montant_reste,
+            'fichier' => $request->fichier
+        ]);
+        return redirect()->route('factures.index');
     }
 
     public function ristourne(Request $request){

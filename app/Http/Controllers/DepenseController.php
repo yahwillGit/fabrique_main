@@ -85,7 +85,7 @@ class DepenseController extends Controller
      */
     public function edit(Depense $depense)
     {
-        //
+
     }
 
     /**

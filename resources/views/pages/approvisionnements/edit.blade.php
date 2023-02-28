@@ -12,25 +12,25 @@
                         <div class="form-group col-md-6">
                             <label for="exampleInputName1">Fournisseur</label>
                             <select class="form-control" id="exampleFormControlSelect2" name="fournisseur_id">
-                               @foreach($fournisseurs as $fournisseurs)
-                                    <option @if ($fournisseurs->id==$approvisionnements->fournisseur_id) selected @endif value = '{{$fournisseurs->id}}' >
-                                        {{$fournisseurs->nom}}
+                               @foreach($fournisseurs as $fournisseur)
+                                    <option @if ($fournisseur->id==$approvisionnements->fournisseur_id) selected @endif value = '{{$fournisseur->id}}' >
+                                        {{$fournisseur->nom}}
 
                                     </option>
                                 @endforeach
                             </select>
-                        </div> 
+                        </div>
                         <div class="form-group col-md-6">
                             <label for="exampleInputName1">Intrant</label>
                             <select class="form-control" id="exampleFormControlSelect2" name="intrant_id">
-                                @foreach($intrants as $intrants)
-                                    <option @if ($intrants->id==$approvisionnements->intrant_id) selected @endif value = '{{$intrants->id}}' >
-                                        {{$intrants->nom}}
+                                @foreach($intrants as $intrant)
+                                    <option @if ($intrant->id==$approvisionnements->intrant_id) selected @endif value = '{{$intrant->id}}' >
+                                        {{$intrant->nom}}
 
                                     </option>
                                 @endforeach
                             </select>
-                        </div> 
+                        </div>
                         <div class="form-group col-md-6">
                             <label for="exampleInputEmail3">Quantité</label>
                             <input type="number" min="0" class="form-control" id="exampleInputEmail3" name="quantite" value="{{$approvisionnements->quantite}}">
@@ -60,7 +60,7 @@
                             <button type="submit" class="btn btn-success mr-2">Valider</button>
                             <button class="btn btn-light">Annuler</button>
                         </div>
-                        
+
                     </form>
                 </div>
             </div>

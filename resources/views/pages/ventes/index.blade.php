@@ -18,7 +18,7 @@
                   @include('layouts/notifications', ['type' => 'info', 'message' => session('ok')])
                   @endif
                 </div>
-            <form class="form-inline" name="form" id="form">
+            <form class="form-inline" action="{{route('ventes.store')}}" method="post" name="form" id="form">
 
                 {{csrf_field()}}
 
@@ -28,21 +28,18 @@
                     <div class="example-wrap">
 
                       <div class="example">
-                         <select class="form-control form-control-lg" name="client">
-                        <option>----choisir----</option>
-                        @foreach($clients as $clients)
-                        <option value={{$clients->id}}> {{$clients->nom}} </option>
-                        @endforeach
-                      </select>
+                        <select class="form-control form-control-lg" name="client">
+                            <option>----choisir----</option>
+                            @foreach($clients as $client)
+                            <option value={{$client->id}}> {{$client->nom}} </option>
+                            @endforeach
+                        </select>
                       </div>
 
-
                     </div>
-
-
-
-                      <hr noshade="noshade" size="10" width="1175">
-                  </div><h4 class="example-title">Produits</h4>
+                        <hr noshade="noshade" size="10" width="1175">
+                  </div>
+                  <h4 class="example-title">Produits</h4>
                 </div>
 
                 <table class="table " table-bordered id="dynamiq">
@@ -51,8 +48,8 @@
                     <td>
                       <select class="form-control form-control-lg" name="produit[]">
                         <option>----choisir----</option>
-                        @foreach($produits as $produits)
-                        <option value={{$produits->id}}> {{$produits->nom}} </option>
+                        @foreach($produits as $produit)
+                        <option value={{$produit->id}}> {{$produit->nom}} </option>
                         @endforeach
                       </select>
                     </td>
@@ -71,7 +68,7 @@
 
                       <div class="col-md-6">
 
-                          <button type="button" id="submit" class="btn btn-large btn-success">Valider</button>
+                          <button type="submit" id="submit" class="btn btn-large btn-success">Valider</button>
 
                       </div>
                       <div class="col-md-6">

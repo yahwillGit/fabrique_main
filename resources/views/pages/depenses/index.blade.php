@@ -4,7 +4,7 @@
         <div class="col-md-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <h2 class="card-title">Liste des recettes</h2> <br>
+                    <h2 class="card-title">Liste des dépenses</h2> <br>
                     <a href="#" data-toggle="modal" data-target="#addnew">
                         <button type="submit" class="btn btn-success mr-2">Nouveau</button>
                     </a>
@@ -68,7 +68,7 @@
                             <th> Libelle</th>
                             <th> Date</th>
                             <th> Montant</th>
-                            <th> Type dépense</th>
+                            <th> Type de dépense</th>
                             <th>Actions</th>
                         </tr>
                         </thead>
@@ -84,10 +84,10 @@
                                         <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown"
                                            aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
                                         <div class="dropdown-menu dropdown-menu-right">
-                                            @if($depense->fichier != null || $depense->fichier != "")
+                                            {{--  @if($depense->fichier != null || $depense->fichier != "")
                                             <a class="dropdown-item" target="_blank" href="{{'http://localhost:8888/fabrique/'. $depense->fichier}}"><i
                                                     class="fa fa-pencil m-r-5"></i> Voir le justificatif</a>
-                                            @endif
+                                            @endif  --}}
                                             <a class="dropdown-item" href="#" data-toggle="modal"
                                                data-target="#update_doctor{{$depense->id}}"><i
                                                     class="fa fa-pencil m-r-5"></i> Modifier</a>
@@ -116,9 +116,6 @@
                                                         <input type="text" class="form-control" id="exampleInputEmail3"
                                                                name="libelle" value="{{$depense->libelle}}">
 
-                                                        <label for="exampleInputEmail3">Libelle</label>
-                                                        <input type="text" class="form-control" id="exampleInputEmail3"
-                                                               name="libelle" value="{{$depense->libelle}}">
 
                                                         <label for="exampleInputEmail3">Montant</label>
                                                         <input type="number" min="0" class="form-control"

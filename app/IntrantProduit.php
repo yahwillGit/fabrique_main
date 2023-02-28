@@ -16,11 +16,11 @@ class IntrantProduit extends Model
 
     public function Intrant()
     {
-        return $this->hasMany('App\Intrant');
+        return $this->belongsTo('App\Intrants');
     }
 
     public function Produit()
     {
-        return $this->hasMany('App\Produit');
+        return $this->belongsTo('App\Produits');
     }
 }

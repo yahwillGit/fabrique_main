@@ -11,6 +11,7 @@ use Carbon\Carbon;
 use ConsoleTVs\Invoices\Classes\Invoice;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Collection;
 
 class ClientProduitController extends Controller
 {
@@ -22,9 +23,10 @@ class ClientProduitController extends Controller
     public function index()
     {
         //
+        $clientproduit = ClientProduit::all();
         $clients = Clients::all();
         $produits = Produits::all();
-        return view('pages.ventes.index', compact('clients','produits'));
+        return view('pages.ventes.index', compact('clientproduit','clients','produits'));
     }
 
     /**
@@ -65,14 +67,15 @@ class ClientProduitController extends Controller
             $total += $produits->prix_standard * $request->quantite[$i];
             $store->save();
 
-            /*$items [] = Collection::make([
-                'name'       => $produits->libelle,
-                'price'      => $produits->prix_standard,
-                'ammount'    => $nombre,
-            ]);*/
+            // $items [] = Collection::make([
+            //     'name'       => $produits->libelle,
+            //     'price'      => $produits->prix_standard,
+            //     'ammount'    => $nombre,
+            // ]);
         }
         }
-        $clt = DB::table('clients','clients.id','=',$client_id)->first();
+        // $clt = DB::table('clients','clients.id','=',$client_id)->first();
+        $clt = Clients::find($client_id);
         $recettes = new Recette();
         $recettes->libelle = 'Vente du client '.$clt->nom.'';
         $recettes->date = date("Y-m-d");

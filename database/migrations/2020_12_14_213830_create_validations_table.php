@@ -21,7 +21,7 @@ class CreateValidationsTable extends Migration
             $table->double('montant_propose')->nullable();
             $table->double('montant_valide')->nullable();
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('depense_id');
+            $table->unsignedBigInteger('depense_id')->nullable();
             $table->timestamps();
         });
     }

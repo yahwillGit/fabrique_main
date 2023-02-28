@@ -11,8 +11,8 @@
                         <div class="form-group col-md-6">
                             <label for="exampleInputName1">Fournisseur</label>
                             <select class="form-control" id="exampleFormControlSelect2" name="fournisseur_id">
-                                @foreach($fournisseurs as $fournisseurs)
-                                    <option value={{$fournisseurs->id}}>{{$fournisseurs->nom}}</option>
+                                @foreach($fournisseurs as $fournisseur)
+                                    <option value={{$fournisseur->id}}>{{$fournisseur->nom}}</option>
                                 @endforeach
                             </select>
                         </div>

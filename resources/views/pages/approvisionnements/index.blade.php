@@ -23,31 +23,31 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($approvisionnements as $approvisionnements)
+                        @foreach($approvisionnements as $approvisionnement)
                         <tr>
-                            <td>{{$approvisionnements->nom_four}} </td>
-                            <td> {{$approvisionnements->nom_intrant}}</td>
-                            <td> {{$approvisionnements->prix_unitaire}} </td>
-                            <td> {{$approvisionnements->quantite}}</td>
-                            <td> {{$approvisionnements->prix_ttc}} </td>
-                            <td> {{$approvisionnements->facture}} </td>
-                            <td> {{$approvisionnements->date}} </td>
-                            <td> {{$approvisionnements->commentaire}} </td>
+                            <td>{{$approvisionnement->nom_four}} </td>
+                            <td> {{$approvisionnement->nom_intrant}}</td>
+                            <td> {{$approvisionnement->prix_unitaire}} </td>
+                            <td> {{$approvisionnement->quantite}}</td>
+                            <td> {{$approvisionnement->prix_ttc}} </td>
+                            <td> {{$approvisionnement->facture}} </td>
+                            <td> {{$approvisionnement->date}} </td>
+                            <td> {{$approvisionnement->commentaire}} </td>
                             <td>
                                 <div class="dropdown dropdown-action">
                                     <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
                                     <div class="dropdown-menu dropdown-menu-right">
-                                        <a class="dropdown-item" href="{{route('approvisionnements.edit', $approvisionnements->id)}}"><i class="fa fa-pencil m-r-5"></i> Modifier</a>
-                                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_doctor{{$approvisionnements->id}}"><i class="fa fa-trash-o m-r-5"></i> Supprimer</a>
+                                        <a class="dropdown-item" href="{{route('approvisionnements.edit', $approvisionnement->id)}}"><i class="fa fa-pencil m-r-5"></i> Modifier</a>
+                                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_doctor{{$approvisionnement->id}}"><i class="fa fa-trash-o m-r-5"></i> Supprimer</a>
                                     </div>
                                 </div>
                             </td>
 
-                            <div id="delete_doctor{{$approvisionnements->id}}" class="modal fade delete-modal" role="dialog">
+                            <div id="delete_doctor{{$approvisionnement->id}}" class="modal fade delete-modal" role="dialog">
                             <div class="modal-dialog modal-dialog-centered">
                                 <div class="modal-content">
                                     <div class="modal-body text-center">
-                                        <form action="{{route('approvisionnements.destroy', $approvisionnements->id)}}" method="POST">
+                                        <form action="{{route('approvisionnements.destroy', $approvisionnement->id)}}" method="POST">
                                             {{ method_field('delete') }}
                                                {{ csrf_field() }}
                                            <img src="sent.png" alt="" width="50" height="46">

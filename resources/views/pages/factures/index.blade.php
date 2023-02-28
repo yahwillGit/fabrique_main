@@ -5,7 +5,7 @@
             <div class="card">
                 <div class="card-body">
                     <h2 class="card-title">Liste des factures</h2> <br>
-
+                    <a href="{{route('factures.create')}}"><button type="submit" class="btn btn-success mr-2">Nouveau</button></a>
                     <table class="table table-striped">
                         <thead>
                         <tr>
@@ -24,7 +24,7 @@
                                 <td> {{$facture->client->nom}}</td>
                                 <td> {{$facture->client->telephone}} </td>
                                 <td style="background: {{$facture->montant_reste == 0 ? '': "red"}}; color: {{$facture->montant_reste == 0 ? '': "white"}};"> {{$facture->montant_ht}} </td>
-                                <td> {{$facture->montant_reste}} </td>
+                                <td> {{$facture->montant_reste ?? 0}} </td>
                                 <td>
                                     <div class="dropdown dropdown-action">
                                         <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown"

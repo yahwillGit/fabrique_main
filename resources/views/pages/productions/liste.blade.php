@@ -11,8 +11,8 @@
                             <label for="exampleInputName1">Date de produition</label>
                             <select class="form-control" id="exampleFormControlSelect2" name="produit_id" onchange="ecran($(this).val(),'table','pages.productions.afficher_production')">
                             	<option>-----Choisissez la date concerant la production pour voir les éléments entrés en productions-------</option>
-                                @foreach($productions as $productions)
-                                    <option value={{$productions->id}}>{{$productions->created_at}}</option>
+                                @foreach($productions as $production)
+                                    <option value={{$production->id}}>{{$production->created_at}}</option>
                                 @endforeach
                             </select>
                         </div>

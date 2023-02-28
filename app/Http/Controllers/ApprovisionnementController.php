@@ -132,9 +132,8 @@ class ApprovisionnementController extends Controller
      * @param  \App\Approvisionnement  $approvisionnement
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy( $id)
+    public function destroy($id)
     {
-        //
         Approvisionnement::destroy($id);
 
         return back()->with('success','Suppression éffectuée avec succès');

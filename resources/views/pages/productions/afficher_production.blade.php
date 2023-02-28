@@ -31,19 +31,19 @@
         <th>Description</th>
         <th>Prix standard</th>
         <th>Quantité réelle</th>
-        
+
       </tr>
     </thead>
-    
+
     <tbody>
-       @foreach($produits as $produits)
+       @foreach($produits as $produit)
       <tr>
-        <td>{{$produits->nom}}</td>
-        <td>{{$produits->description}}</td>
-        <td>{{$produits->prix_standard}}</td>
-        <td>{{$produits->qte_reel}}</td>
-        
-        
+        <td>{{$produit->nom}}</td>
+        <td>{{$produit->description}}</td>
+        <td>{{$produit->prix_standard}}</td>
+        <td>{{$produit->qte_reel}}</td>
+
+
       </tr>
       @endforeach
 
@@ -58,20 +58,20 @@
         <th>Unité</th>
         <th>Prix standard</th>
         <th>Quantité utilisée</th>
-        
+
       </tr>
     </thead>
-    
+
     <tbody>
-      
-      @foreach($intrants as $intrants)
+
+      @foreach($intrants as $intrant)
       <tr>
-        <td>{{$intrants->nom}}</td>
-        <td>{{$intrants->unite}}</td>
-        <td>{{$intrants->prix_standard}}</td>
-        <td>{{$intrants->qte}}</td>
-        
-        
+        <td>{{$intrant->nom}}</td>
+        <td>{{$intrant->unite}}</td>
+        <td>{{$intrant->prix_standard}}</td>
+        <td>{{$intrant->qte}}</td>
+
+
       </tr>
       @endforeach
 
@@ -83,17 +83,17 @@
 <table class="table table-hover dataTable table-striped w-full" data-plugin="dataTable">
     <thead>
       <tr>
-        <th>Nom de l'employé</th>
-        
+        <th>Nom de lemployé</th>
+
       </tr>
     </thead>
-    
+
     <tbody>
-      
-      @foreach($employes as $employes)
+
+      @foreach($employes as $employe)
       <tr>
-        <td>{{$employes->nom}}</td>
-        
+        <td>{{$employe->nom}}</td>
+
       </tr>
       @endforeach
 
@@ -101,4 +101,4 @@
     </tbody>
   </table>
 
-  
+

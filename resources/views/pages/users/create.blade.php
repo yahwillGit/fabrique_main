@@ -19,7 +19,7 @@
                             <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Email">
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="exampleInputEmail3">Nom d'utilisateur</label>
+                            <label for="exampleInputEmail3">Nom dutilisateur</label>
                             <input type="text" class="form-control" id="exampleInputEmail3" placeholder="Identifiant">
                         </div>
                         <div class="form-group col-md-6">

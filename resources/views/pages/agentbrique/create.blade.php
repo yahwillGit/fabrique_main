@@ -12,16 +12,16 @@
                         <div class="form-group col-md-6">
                             <label for="exampleInputName1">Produit</label>
                             <select class="form-control" id="exampleFormControlSelect2" name="produit_id">
-                                @foreach($produits as $produits)
-                                    <option value={{$produits->id}}>{{$produits->nom}}</option>
+                                @foreach($produits as $produit)
+                                    <option value={{$produit->id}}>{{$produit->nom}}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="exampleInputName1">Intrant</label>
                             <select class="form-control" id="exampleFormControlSelect2" name="intrant_id">
-                                @foreach($intrants as $intrants)
-                                    <option value={{$intrants->id}}>{{$intrants->nom}}</option>
+                                @foreach($intrants as $intrant)
+                                    <option value={{$intrant->id}}>{{$intrant->nom}}</option>
                                 @endforeach
                             </select>
                         </div>

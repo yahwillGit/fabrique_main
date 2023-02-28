@@ -21,7 +21,7 @@ class Intrants extends Model
 
     public function IntrantProduit()
     {
-        return $this->belongsTo('App\IntrantProduit');
+        return $this->hasMany('App\IntrantProduit');
     }
 
     public function IntrantProduition()
