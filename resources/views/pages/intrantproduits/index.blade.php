@@ -57,7 +57,7 @@
                                                     @endforeach
                                                 </select>
 
-                                                <label for="exampleInputName1">Fournisseur</label>
+                                                <label for="exampleInputName1">Produits</label>
                                                 <select class="form-control" id="exampleFormControlSelect2" name="produit_id">
                                                    @foreach($produits as $produit)
                                                         <option @if ($produit->id==$intrantproduit->produit_id) selected @endif value = '{{$produit->id}}' >

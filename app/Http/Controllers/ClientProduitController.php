@@ -23,7 +23,7 @@ class ClientProduitController extends Controller
     public function index()
     {
         //
-        $clientproduit = ClientProduit::all();
+        $clientproduit = ClientProduit::orderBy("id", "desc")->get(); // Better when it's descending
         $clients = Clients::all();
         $produits = Produits::all();
         return view('pages.ventes.index', compact('clientproduit','clients','produits'));
@@ -36,7 +36,10 @@ class ClientProduitController extends Controller
      */
     public function create()
     {
-        //
+        $clientproduit = ClientProduit::all();
+        $clients = Clients::all();
+        $produits = Produits::all();
+        return view('pages.ventes.create', compact('clientproduit','clients','produits'));
     }
 
     /**
@@ -51,6 +54,8 @@ class ClientProduitController extends Controller
       $nombre = count($request->quantite);
       $client_id =$request->client;
       $total = 0;
+      // Create the invoice here and update it later
+      $invoice = Invoice::make();
 
       $items = array();
       if ($nombre > 0) {
@@ -61,11 +66,15 @@ class ClientProduitController extends Controller
             $store->produit_id = $request->produit[$i];
             $store->client_id = $client_id;
 
+            // Seriously ? Think of a way to refactor var names, it's only one product here
             $produits = Produits::find($request->produit[$i]);
             $produits->qte_stock -= $request->quantite[$i];
             $produits->save();
             $total += $produits->prix_standard * $request->quantite[$i];
             $store->save();
+
+            // Add items
+            $invoice->addItem($produits->nom, $produits->prix_standard, $store->qte);
 
             // $items [] = Collection::make([
             //     'name'       => $produits->libelle,
@@ -83,31 +92,43 @@ class ClientProduitController extends Controller
         $recettes->typerecette_id = 1;
         $recettes->save();
 
-        $invoice = Invoice::make()
-            ->addItem('Test Item', 10.25, 2, 1412)
-            ->addItem('Test Item 2', 5, 2, 923)
-            ->addItem('Test Item 3', 15.55, 5, 42)
-            ->with_pagination(true)
+        // On va se servir de cela pour la configuration de produit
+        /*
+        * Il respecte le format (name, price amount, id)
+        * Possibilité d'ajouter plusieurs produits
+        */
+        $invoice->with_pagination(true)
             ->duplicate_header(true)
             ->due_date(Carbon::now()->addMonths(1))
             ->customer([
-                'name'      => 'Èrik Campobadal Forés',
-                'id'        => '12345678A',
-                'phone'     => '+34 123 456 789',
-                'location'  => 'C / Unknown Street 1st',
-                'zip'       => '08241',
-                'city'      => 'Manresa',
-                'country'   => 'Spain',
+                'name'      => $clt->nom,
+                'phone'     => $clt->ntelephone,
+                'zip'       => $clt->email
             ])
-            ->save('public/myinvoicename.pdf');
+            ->business([
+                'name'      => 'GesFabrik',
+                'id'        => '',
+                'phone'     => '',
+                'location'  => 'Lomé',
+                'zip'       => '',
+                'country'   => 'Togo'
+            ])
+            ->name("Facture")
+            ->currency("XOF"); // Forgot the currency definition
+
 
         $facture = new Facture();
         $facture->client_id = $clt->id;
         $facture->montant_ht = $total;
         $facture->montant_reste = $total;
         $facture->save();
-        $facture->fichier = 'factures/'. $facture->id.'.pdf';
+        $facture->fichier = 'factures/'. $facture->id.'.pdf'; // this line seems useless but you have to update it
         $facture->save();
+
+        $invoice->number($facture->id)
+            ->save('public/factures/'. $facture->id.'.pdf'); // Specifying the right path and saving the file
+
+        return redirect()->away('storage/factures/'. $facture->id.'.pdf');
     }
 
     /**
@@ -139,9 +160,18 @@ class ClientProduitController extends Controller
      * @param  \App\ClientProduit  $clientProduit
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ClientProduit $clientProduit)
+    public function update(Request $request, $id)
     {
         //
+        $clientproduit = ClientProduit::FindOrFail($id);
+
+        $clientproduit->client_id = Request('client_id');
+        $clientproduit->produit_id = Request('produit_id');
+        $clientproduit->qte = Request('quantite');
+
+        $clientproduit->save();
+
+        return back()->with('success', 'Informations mise-à-jour avec succès');
     }
 
     /**
@@ -150,8 +180,11 @@ class ClientProduitController extends Controller
      * @param  \App\ClientProduit  $clientProduit
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ClientProduit $clientProduit)
+    public function destroy(Request $request, $id)
     {
         //
+        ClientProduit::destroy($id);
+
+        return back()->with('success','vente supprimé avec succès');
     }
 }

@@ -15,7 +15,7 @@ class FactureController extends Controller
      */
     public function index()
     {
-        $factures = Facture::all();
+        $factures = Facture::OrderBy("id", "DESC")->get(); // Please always filter
         return view('pages.factures.index',compact('factures'));
     }
 

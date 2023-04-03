@@ -49,12 +49,12 @@
             <div class="collapse" id="ventes">
                 <ul class="nav flex-column sub-menu">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('ventes.index')}}">
+                        <a class="nav-link" href="{{route('ventes.create')}}">
                             <span class="menu-title">Vente</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">Liste</a>
+                        <a class="nav-link" href="{{route('ventes.index')}}">Liste</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('factures.index')}}">Factures</a>
