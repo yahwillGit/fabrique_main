@@ -35,7 +35,7 @@
                                             <a class="dropdown-item" target="_blank"
                                                href='{{ asset("/storage/$facture->fichier") }}'> <!-- This is the right URL -->
                                                <i class="fa fa-pencil m-r-5"></i> Voir le fichier</a>
-                                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modalRistourne{{$facture->id}}"><i class="fa fa-trash-o m-r-5"></i> Accorder une ristourne </a>
+                                            {{--  <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modalRistourne{{$facture->id}}"><i class="fa fa-trash-o m-r-5"></i> Accorder une ristourne </a>  --}}
                                         </div>
                                     </div>
 

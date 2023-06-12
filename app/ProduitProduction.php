@@ -16,13 +16,13 @@ class ProduitProduction extends Model
     protected $table = 'produit_productions';
 
 
-    public function Produition()
+    public function Production()
     {
-        return $this->hasMany('App\Produition');
+        return $this->belongsTo('App\Production');
     }
 
     public function Produit()
     {
-        return $this->hasMany('App\Produit');
+        return $this->belongsTo('App\Produits');
     }
 }

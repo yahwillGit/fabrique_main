@@ -14,13 +14,14 @@ class Production extends Model
 
     protected $table = 'productions';
 
-    public function IntrantProduition()
+    public function IntrantProduction()
     {
-        return $this->belongsTo('App\IntrantProduit');
+        return $this->hasMany('App\IntrantProduction');
     }
 
     public function ProduitProduction()
     {
-        return $this->belongsTo('App\ProduitProduction');
+        return $this->hasMany('App\ProduitProduction');
     }
+
 }

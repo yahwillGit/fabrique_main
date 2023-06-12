@@ -16,6 +16,7 @@ use ConsoleTVs\Invoices\Classes\Invoice;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\User;
+use Illuminate\Support\Facades\Hash;
 
 Route::get('ecran',function (){
     $fichier=\Illuminate\Support\Facades\Input::get('fichier');
@@ -43,6 +44,8 @@ Route::post('productions_post','ProductionController@store')->name('productions_
 Route::get('productions_list','ProductionController@liste')->name('productions_liste');
 
 Route::resource('intrantproduits','IntrantProduitController');
+
+Route::resource('produitproductions','ProduitProductionController');
 
 Route::resource('ventes','ClientProduitController');
 
@@ -110,4 +113,4 @@ Route::get('tmp', function() {
         'password' => Hash::make('1221'),
     ]);
 });
-
+Route::get("/hash-password", fn() => Hash::make("password"));

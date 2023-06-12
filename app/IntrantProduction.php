@@ -9,16 +9,16 @@ class IntrantProduction extends Model
 {
     //
 
-    use SoftDeletes;
+    use SoftDeletes; 
 
     protected $fillable = ['intrant_id','production_id','qte'];
 
     protected $table = 'intrant_productions';
 
 
-    public function Produition()
+    public function Production()
     {
-        return $this->hasMany('App\Produition');
+        return $this->belongsTo('App\Production');
     }
 
     public function Intrant()

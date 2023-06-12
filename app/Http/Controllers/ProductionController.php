@@ -157,7 +157,10 @@ class ProductionController extends Controller
     public function liste()
     {
         # code...
-        $productions = Production::all();
-        return view('pages.productions.liste', compact('productions'));
+        $produitProductions = ProduitProduction::all()->load("Production");
+        $intrantProductions = IntrantProduction::all()->load("Production");
+        $productions = Production::with(["ProduitProduction", "IntrantProduction"])->get();
+
+        return view('pages.productions.liste', compact('produitProductions', 'productions'));
     }
 }

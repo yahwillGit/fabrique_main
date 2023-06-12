@@ -65,6 +65,7 @@ class ApprovisionnementController extends Controller
         $validation->designation = 'Approvisionement en '.$intrants->nom;
         $validation->montant_propose = $request->prix_ttc;
         $validation->user_id = auth()->id();
+        $validation->depense_id = $depense->id;
         $validation->save();
 
         return Redirect::route('approvisionnements.index')->with('success','Opération éffectuée avec succès');

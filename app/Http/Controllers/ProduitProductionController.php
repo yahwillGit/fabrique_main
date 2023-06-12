@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Intrants;
 use App\ProduitProduction;
+use App\Produits;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProduitProductionController extends Controller
 {
@@ -15,6 +18,12 @@ class ProduitProductionController extends Controller
     public function index()
     {
         //
+        $produitproductions = DB::table('produit_productions')
+        ->join('produits','produits.id','=','produit_productions.produit_id')
+        ->select('produits.nom as nom_prod')
+        ->get();
+        $produits = Produits::all();
+        return view('pages.produitproductions.index', compact('produitproductions','produits'));
     }
 
     /**
