@@ -144,6 +144,9 @@
                         <a class="nav-link" href="{{ route('register') }}">Nouveau</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href"">Liste</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href"">Rôles & Permissions</a>
                     </li>
                 </ul>

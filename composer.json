@@ -16,7 +16,7 @@
         "laravel/tinker": "^2.6.2",
         "laravel/ui": "^4.2",
         "laraveldaily/laravel-charts": "^0.1.25",
-        "spatie/laravel-permission": "^5.7.0"
+        "spatie/laravel-permission": "^5.10"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",
