@@ -15,6 +15,8 @@ use Carbon\Carbon;
 use ConsoleTVs\Invoices\Classes\Invoice;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 use App\User;
 use Illuminate\Support\Facades\Hash;
 
@@ -23,6 +25,10 @@ Route::get('ecran',function (){
     $val=\Illuminate\Support\Facades\Input::get('val');
     $param=\Illuminate\Support\Facades\Input::get('param');
     return view($fichier ,array('val'=>$val,'param'=>$param));
+});
+
+Route::group(['middleware' => ['auth']], function() {
+    Route::resource('roles', 'App\Http\Controllers\RoleController');
 });
 
 Route::resource('fournisseurs','FournisseursController');
@@ -66,6 +72,16 @@ Route::resource('reglements','ReglementController');
 Route::post('vente_post','ClientProduitController@store')->name('vente_post');
 
 Auth::routes();
+
+Route::get("/test", function() {
+
+    $admin -> hasAllRoles(Role::all());
+
+
+$roles = auth()->user()->roles;
+return dd($roles);
+
+});
 
 Route::get('/', 'HomeController@index')->name('home');
 

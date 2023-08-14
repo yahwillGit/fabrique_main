@@ -17,7 +17,12 @@ class HomeController extends Controller
     }
 
     public function index()
+
     {
+
+        // $role = auth()->user()->roles[0];
+        // dd($role->hasPermissionTo('viewCharts'));
+
         $chart_options = [
             'chart_title' => 'Productions par jour',
             'report_type' => 'group_by_date',

@@ -8,6 +8,8 @@
 
             </div>
         </div>
+        @can('viewCharts')
+
         <div class="col-md-6">
 
             <div class="card">
@@ -35,6 +37,9 @@
 
             </div>
         </div>
+
+        @endcan
+
 
     </div>
 

@@ -16,7 +16,7 @@ class secretarySeeder extends Seeder
      */
     public function run()
     {
-        $permissions = [];
+        $permissions = ['viewCharts','viewProduction','','','addVentes','viewVentes','viewFactures','viewFactDetails','downloadFactures','addVentes','addVentes','addVentes','addVentes','addVentes','addVentes','addVentes','addVentes','addVentes','addVentes','addVentes','addVentes',];
         $role = Role::where('name', 'secretary')->first();
         foreach ($permissions as $permission) {
             $role -> givePermissionTo($permission);

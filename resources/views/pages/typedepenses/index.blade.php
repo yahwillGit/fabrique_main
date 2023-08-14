@@ -5,8 +5,9 @@
             <div class="card">
                 <div class="card-body">
                     <h2 class="card-title">Type dépense</h2> <br>
+                    @can('addTypeDepense')
                     <a href="#" data-toggle="modal" data-target="#addnew"><button type="submit" class="btn btn-success mr-2">Nouveau</button></a>
-
+                    @endcan
                     <br><br>
                     <div> @include('layouts.notification')</div>
                     <table class="table table-striped">
@@ -21,12 +22,19 @@
                             <tr>
                                 <td>{{$types->libelle}} </td>
                                 <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
                                 <td>
                                     <div class="dropdown dropdown-action">
                                         <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
                                         <div class="dropdown-menu dropdown-menu-right">
+                                            @can('editTypeDepense')
                                             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#exampleFormModal{{$types->id}}"><i class="fa fa-pencil m-r-5"></i> Modifier</a>
+                                            @endcan
+                                            @can('deleteTypeDepense')
                                             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_doctor{{$types->id}}"><i class="fa fa-trash-o m-r-5"></i> Supprimer</a>
+                                            @endcan
                                         </div>
                                     </div>
                                     <div class="modal fade" id="exampleFormModal{{$types->id}}" aria-hidden="false" aria-labelledby="exampleFormModalLabel"

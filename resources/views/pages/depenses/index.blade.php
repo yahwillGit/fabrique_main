@@ -6,7 +6,9 @@
                 <div class="card-body">
                     <h2 class="card-title">Liste des dépenses</h2> <br>
                     <a href="#" data-toggle="modal" data-target="#addnew">
-                        <button type="submit" class="btn btn-success mr-2">Nouveau</button>
+                    @can('addDepenses')
+                    <button type="submit" class="btn btn-success mr-2">Nouveau</button>
+                    @endcan
                     </a>
                     <div class="modal fade" id="addnew" aria-hidden="false" aria-labelledby="exampleFormModalLabel"
                          role="dialog" tabindex="-1">
@@ -88,12 +90,16 @@
                                             <a class="dropdown-item" target="_blank" href="{{'http://localhost:8888/fabrique/'. $depense->fichier}}"><i
                                                     class="fa fa-pencil m-r-5"></i> Voir le justificatif</a>
                                             @endif  --}}
+                                            @can('editDepenses')
                                             <a class="dropdown-item" href="#" data-toggle="modal"
                                                data-target="#update_doctor{{$depense->id}}"><i
                                                     class="fa fa-pencil m-r-5"></i> Modifier</a>
+                                            @endcan
+                                            @can('deleteDepenses')
                                             <a class="dropdown-item" href="#" data-toggle="modal"
                                                data-target="#delete_doctor{{$depense->id}}"><i
                                                     class="fa fa-trash-o m-r-5"></i> Supprimer</a>
+                                            @endcan
                                         </div>
                                     </div>
                                     <div class="modal fade" id="update_doctor{{$depense->id}}" aria-hidden="false"

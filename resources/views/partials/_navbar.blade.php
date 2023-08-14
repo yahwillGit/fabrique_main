@@ -10,12 +10,12 @@
             <li class="nav-item font-weight-semibold d-none d-lg-block">Gestion de fabrique</li>
         </ul>
         <form class="ml-auto search-form d-none d-md-block" action="#">
-            <div class="form-group">
+            {{--  <div class="form-group">
                 <input type="search" class="form-control" placeholder="Rechercher">
-            </div>
+            </div>  --}}
         </form>
         <ul class="navbar-nav ml-auto">
-            <li class="nav-item dropdown">
+            {{--  <li class="nav-item dropdown">
                 <a class="nav-link count-indicator" id="messageDropdown" href="#" data-toggle="dropdown"
                    aria-expanded="false">
                     <i class="mdi mdi-bell-outline"></i>
@@ -40,7 +40,7 @@
                         </a>
                     @endforeach
                 </div>
-            </li>
+            </li>  --}}
 
             <li class="nav-item dropdown d-none d-xl-inline-block user-dropdown">
                 <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown"
@@ -54,10 +54,10 @@
                         <p class="mb-1 mt-3 font-weight-semibold">{{auth()->user()->name ?? ""}}</p>
                         <p class="font-weight-light text-muted mb-0"></p>
                     </div>
-                    <a class="dropdown-item">Profil <span class="badge badge-pill badge-danger">1</span><i
-                            class="dropdown-item-icon ti-dashboard"></i></a>
-                    <a class="dropdown-item">Messages<i class="dropdown-item-icon ti-comment-alt"></i></a>
-                    <a class="dropdown-item">Agenda<i class="dropdown-item-icon ti-help-alt"></i></a>
+                    {{--  <a class="dropdown-item">Profil <span class="badge badge-pill badge-danger">1</span><i
+                            class="dropdown-item-icon ti-dashboard"></i></a>  --}}
+                    {{--  <a class="dropdown-item">Messages<i class="dropdown-item-icon ti-comment-alt"></i></a>  --}}
+                    {{--  <a class="dropdown-item">Agenda<i class="dropdown-item-icon ti-help-alt"></i></a>  --}}
                     <a class="dropdown-item" href="{{ route('logout') }}"
                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

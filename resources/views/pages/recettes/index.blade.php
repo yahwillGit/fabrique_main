@@ -5,7 +5,9 @@
             <div class="card">
                 <div class="card-body">
                     <h2 class="card-title">Liste des recettes</h2> <br>
+                    @can('addRecettes')
                     <a href="#" data-toggle="modal" data-target="#addnew"><button type="submit" class="btn btn-success mr-2">Nouveau</button></a>
+                    @endcan
                     <div class="modal fade" id="addnew" aria-hidden="false" aria-labelledby="exampleFormModalLabel"
                          role="dialog" tabindex="-1">
                         <div class="modal-dialog modal-simple">
@@ -61,12 +63,16 @@
                                     <div class="dropdown dropdown-action">
                                         <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
                                         <div class="dropdown-menu dropdown-menu-right">
+                                            @can('editRecettes')
                                             <a class="dropdown-item" href="#" data-toggle="modal"
                                             data-target="#update_doctor{{$recette->id}}"><i
                                             class="fa fa-pencil m-r-5"></i> Modifier</a>
+                                            @endcan
+                                            @can('deleteRecettes')
                                             <a class="dropdown-item" href="#" data-toggle="modal"
                                             data-target="#delete_doctor{{$recette->id}}"><i
                                             class="fa fa-trash-o m-r-5"></i> Supprimer</a>
+                                            @endcan
                                         </div>
                                     </div>
                                     <div class="modal fade" id="update_doctor{{$recette->id}}" aria-hidden="false" aria-labelledby="exampleFormModalLabel"

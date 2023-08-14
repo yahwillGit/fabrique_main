@@ -5,7 +5,9 @@
             <div class="card">
                 <div class="card-body">
                     <h2 class="card-title">Liste des approvisionnements</h2> <br>
+                    @can('addApprovisionnements')
                     <a href="{{route('approvisionnements.create')}}"><button type="submit" class="btn btn-success mr-2">Nouveau</button></a>
+                    @endcan
                     <br><br>
                     <div> @include('layouts.notification')</div>
                     <table class="table table-striped">
@@ -37,8 +39,12 @@
                                 <div class="dropdown dropdown-action">
                                     <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
                                     <div class="dropdown-menu dropdown-menu-right">
+                                        @can('editApprovisionnements')
                                         <a class="dropdown-item" href="{{route('approvisionnements.edit', $approvisionnement->id)}}"><i class="fa fa-pencil m-r-5"></i> Modifier</a>
+                                        @endcan
+                                        @can('deleteApprovisionnements')
                                         <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_doctor{{$approvisionnement->id}}"><i class="fa fa-trash-o m-r-5"></i> Supprimer</a>
+                                        @endcan
                                     </div>
                                 </div>
                             </td>
